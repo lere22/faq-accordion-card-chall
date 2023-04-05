@@ -35,7 +35,6 @@ html {
 	margin: 0;
 	padding: 0;
 	box-sizing: inherit;
-	text-decoration: none;
 }
 
 body {
@@ -82,6 +81,21 @@ main {
 	left: -20px;
 	top: 200px;
 	transition: transform 300ms ease-in-out;
+}
+
+.card:hover .card-image::before,
+.card:focus .card-image::before {
+	animation: left-right 1.25s linear alternate infinite;
+}
+
+@keyframes left-right {
+	0% {
+		transform: translateX(0%);
+	}
+
+	100% {
+		transform: translateX(-15%);
+	}
 }
 
 .card-body {
@@ -131,10 +145,6 @@ input[type="checkbox"] {
 	color: var(--secondary);
 }
 
-.card-accordion-item-label:hover ~ .card-image::before {
-	transform: translateX(-50px);
-}
-
 input[type="checkbox"]:checked + .card-accordion-item-label {
 	font-weight: var(--fw-700);
 	color: var(--text-very-dark-grayish-blue);
@@ -156,13 +166,14 @@ input[type="checkbox"]:checked ~ .card-accordion-item-content {
 }
 
 .attribution a {
-	color: var(--secondary);
-}
-
-.attribution a:hover {
 	color: var(--white);
 }
 
+.attribution a:hover {
+	font-weight: var(--fw-700);
+}
+
+/* mobile */
 @media (max-width: 990px) {
 	.card {
 		display: block;
